@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "author": "Nicolas Bamamou",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -19.2, "left": 91.24, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": 192, "left": -0.6, "attrs": {} },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": 148.6, "left": 42.44, "rotate": 90, "attrs": {} },
+    {
+      "type": "wokwi-tm1637-7segment",
+      "id": "sevseg2",
+      "top": 115.16,
+      "left": -175.37,
+      "attrs": { "color": "red" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "vcc1:VCC", "sevseg2:VCC", "red", [ "v0" ] ],
+    [ "gnd1:GND", "sevseg2:GND", "black", [ "v0" ] ],
+    [ "esp:13", "sevseg2:DIO", "green", [ "h0" ] ],
+    [ "esp:12", "sevseg2:CLK", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
